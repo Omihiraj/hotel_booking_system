@@ -68,12 +68,18 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
               )
             ],
           ),
-          Text("The Most Relavant"),
+          const Text(
+            "The Most Relavant",
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           SizedBox(
             height: AppConst.mostRelevantCardHeight,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: [
+              children: const [
                 MostRelavantWidget(),
                 MostRelavantWidget(),
               ],
