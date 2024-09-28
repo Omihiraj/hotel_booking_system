@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_management_app/utility/app_colors.dart';
+import 'package:hotel_management_app/utility/app_const.dart';
+
+import '../../widgets/most_relavant_widget.dart';
 
 class DiscoverScreen extends StatefulWidget {
   const DiscoverScreen({super.key});
@@ -11,6 +15,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
       body: ListView(
         children: [
           Stack(
@@ -62,6 +67,17 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                 ),
               )
             ],
+          ),
+          Text("The Most Relavant"),
+          SizedBox(
+            height: AppConst.mostRelevantCardHeight,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                MostRelavantWidget(),
+                MostRelavantWidget(),
+              ],
+            ),
           )
         ],
       ),
