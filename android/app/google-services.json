@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "833120402629",
+    "project_id": "botel-booking-system-16",
+    "storage_bucket": "botel-booking-system-16.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833120402629:android:642d5222035f05112904ac",
+        "android_client_info": {
+          "package_name": "com.example.hotel_management_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQEfF3pTBEHV7g0JJqs01QsSENR9wRPrg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
