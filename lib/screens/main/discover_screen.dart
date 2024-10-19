@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_management_app/main.dart';
+import 'package:hotel_management_app/providers/hotel_provider.dart';
 import 'package:hotel_management_app/utility/app_colors.dart';
 import 'package:hotel_management_app/utility/app_const.dart';
+import 'package:provider/provider.dart';
 
 import '../../widgets/most_relavant_widget.dart';
 
@@ -77,12 +80,27 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
           ),
           SizedBox(
             height: AppConst.mostRelevantCardHeight,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: const [
-                MostRelavantWidget(),
-                MostRelavantWidget(),
-              ],
+            child: Consumer<HotelProvider>(
+              builder: (context, hotelProvider, child) {
+                return hotelProvider.allHotelData.isEmpty
+                    ? const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: hotelProvider.allHotelData.length,
+                        itemBuilder: (context, index) {
+                          return MostRelavantWidget(
+                            title: hotelProvider.allHotelData[index].title!,
+                            rating: hotelProvider.allHotelData[index].rating!,
+                            mainImage:
+                                hotelProvider.allHotelData[index].mainImage!,
+                            amenities:
+                                hotelProvider.allHotelData[index].amenities!,
+                          );
+                        },
+                      );
+              },
             ),
           )
         ],
