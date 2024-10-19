@@ -4,8 +4,16 @@ import '../utility/app_const.dart';
 import 'facility_widget.dart';
 
 class MostRelavantWidget extends StatelessWidget {
+  final String title;
+  final num rating;
+  final String mainImage;
+  final List<dynamic> amenities;
   const MostRelavantWidget({
     super.key,
+    required this.title,
+    required this.rating,
+    required this.mainImage,
+    required this.amenities,
   });
 
   @override
@@ -24,7 +32,12 @@ class MostRelavantWidget extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(AppConst.radius),
-                  child: Image.asset("assets/hotel1.jpg"),
+                  child: Image.network(
+                    mainImage,
+                    width: 350,
+                    height: 200,
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 Positioned(
                   top: 20,
@@ -45,32 +58,30 @@ class MostRelavantWidget extends StatelessWidget {
                 )
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Tiny Hopme in Roelingen"),
+                  Text(title),
                   Row(
-                    children: [Icon(Icons.star), Text("4.96(217)")],
+                    children: [const Icon(Icons.star), Text("$rating")],
                   )
                 ],
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0),
-              child: Row(
-                children: [
-                  FacilityWidget(
-                    facility: "4guests",
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: SizedBox(
+                width: 350,
+                height: 50,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: amenities.length,
+                  itemBuilder: (context, index) => FacilityWidget(
+                    facility: amenities[index],
                   ),
-                  FacilityWidget(
-                    facility: "2bedroom",
-                  ),
-                  FacilityWidget(
-                    facility: "2beds",
-                  )
-                ],
+                ),
               ),
             ),
             const Row(
